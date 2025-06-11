@@ -1,0 +1,238 @@
+local HttpService = game:GetService("HttpService")
+local UserInputService = game:GetService("UserInputService")
+
+-- Cek dan gunakan request yang tersedia dari executor
+local function getRequestFunction()
+    return (syn and syn.request) or (http and http.request) or http_request or request or (fluxus and fluxus.request) or nil
+end
+
+-- Fungsi validasi key
+local function validateKey(key)
+    local request = getRequestFunction()
+    if not request then
+        return false, "Executor tidak mendukung HTTP request."
+    end
+
+    local success, res = pcall(function()
+        return request({
+            Url = "https://key.rbxscript.workers.dev/api/validate?key=" .. key,
+            Method = "GET"
+        })
+    end)
+
+    if not success or not res then return false, "Gagal mengirim request." end
+
+    local body = res.Body
+    if typeof(body) == "string" then
+        local success2, json = pcall(function() return HttpService:JSONDecode(body) end)
+        if success2 and json and json.success == true then
+            return true
+        end
+    end
+    return false, "Key tidak valid."
+end
+
+-- Fungsi untuk membuat UI
+local function createUI()
+    local ScreenGui = Instance.new("ScreenGui")
+    ScreenGui.Name = "KeySystemUI"
+    ScreenGui.Parent = game:GetService("CoreGui")
+    ScreenGui.ResetOnSpawn = false
+
+    -- Main Frame
+    local Frame = Instance.new("Frame")
+    Frame.Size = UDim2.new(0, 350, 0, 220)
+    Frame.Position = UDim2.new(0.5, -175, 0.5, -110)
+    Frame.BackgroundColor3 = Color3.fromRGB(20, 20, 25)
+    Frame.BorderSizePixel = 0
+    Frame.Parent = ScreenGui
+    Frame.ClipsDescendants = true
+
+    -- Gradient Background
+    local UIGradient = Instance.new("UIGradient")
+    UIGradient.Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(30, 30, 35)),
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(50, 50, 60))
+    })
+    UIGradient.Rotation = 45
+    UIGradient.Parent = Frame
+
+    -- Corner Rounding
+    local UICorner = Instance.new("UICorner")
+    UICorner.CornerRadius = UDim.new(0, 12)
+    UICorner.Parent = Frame
+
+    -- Title
+    local Title = Instance.new("TextLabel")
+    Title.Size = UDim2.new(1, 0, 0, 40)
+    Title.Position = UDim2.new(0, 0, 0, 10)
+    Title.BackgroundTransparency = 1
+    Title.Text = "Key System RbxScriptHub"
+    Title.TextColor3 = Color3.fromRGB(200, 200, 255)
+    Title.TextSize = 24
+    Title.Font = Enum.Font.GothamBold
+    Title.TextStrokeTransparency = 0.9
+    Title.Parent = Frame
+
+    -- Error Label
+    local ErrorLabel = Instance.new("TextLabel")
+    ErrorLabel.Size = UDim2.new(0.9, 0, 0, 20)
+    ErrorLabel.Position = UDim2.new(0.05, 0, 0, 100)
+    ErrorLabel.BackgroundTransparency = 1
+    ErrorLabel.Text = ""
+    ErrorLabel.TextColor3 = Color3.fromRGB(255, 100, 100)
+    ErrorLabel.TextSize = 14
+    ErrorLabel.Font = Enum.Font.Gotham
+    ErrorLabel.TextXAlignment = Enum.TextXAlignment.Center
+    ErrorLabel.Parent = Frame
+
+    -- TextBox
+    local TextBox = Instance.new("TextBox")
+    TextBox.Size = UDim2.new(0.9, 0, 0, 40)
+    TextBox.Position = UDim2.new(0.05, 0, 0, 60)
+    TextBox.BackgroundColor3 = Color3.fromRGB(40, 40, 45)
+    TextBox.TextColor3 = Color3.fromRGB(220, 220, 220)
+    TextBox.PlaceholderText = "Enter your key here..."
+    TextBox.Text = ""
+    TextBox.TextSize = 16
+    TextBox.Font = Enum.Font.Gotham
+    TextBox.ClearTextOnFocus = false
+    TextBox.Parent = Frame
+
+    local TextBoxCorner = Instance.new("UICorner")
+    TextBoxCorner.CornerRadius = UDim.new(0, 8)
+    TextBoxCorner.Parent = TextBox
+
+    -- Submit Button
+    local Submit = Instance.new("TextButton")
+    Submit.Size = UDim2.new(0.35, 0, 0, 40)
+    Submit.Position = UDim2.new(0.15, 0, 1, -60)
+    Submit.BackgroundColor3 = Color3.fromRGB(100, 100, 255)
+    Submit.Text = "Submit"
+    Submit.TextColor3 = Color3.fromRGB(255, 255, 255)
+    Submit.TextSize = 16
+    Submit.Font = Enum.Font.GothamBold
+    Submit.Parent = Frame
+
+    local SubmitCorner = Instance.new("UICorner")
+    SubmitCorner.CornerRadius = UDim.new(0, 8)
+    SubmitCorner.Parent = Submit
+
+    -- Get Key Button
+    local GetKey = Instance.new("TextButton")
+    GetKey.Size = UDim2.new(0.35, 0, 0, 40)
+    GetKey.Position = UDim2.new(0.55, 0, 1, -60)
+    GetKey.BackgroundColor3 = Color3.fromRGB(255, 100, 100)
+    GetKey.Text = "Get Key"
+    GetKey.TextColor3 = Color3.fromRGB(255, 255, 255)
+    GetKey.TextSize = 16
+    GetKey.Font = Enum.Font.GothamBold
+    GetKey.Parent = Frame
+
+    local GetKeyCorner = Instance.new("UICorner")
+    GetKeyCorner.CornerRadius = UDim.new(0, 8)
+    GetKeyCorner.Parent = GetKey
+
+    -- Button Hover Effects
+    local function updateButtonHover(button, baseColor, hoverColor)
+        button.MouseEnter:Connect(function()
+            game:GetService("TweenService"):Create(button, TweenInfo.new(0.2), {
+                BackgroundColor3 = hoverColor
+            }):Play()
+        end)
+        button.MouseLeave:Connect(function()
+            game:GetService("TweenService"):Create(button, TweenInfo.new(0.2), {
+                BackgroundColor3 = baseColor
+            }):Play()
+        end)
+    end
+    updateButtonHover(Submit, Color3.fromRGB(100, 100, 255), Color3.fromRGB(120, 120, 255))
+    updateButtonHover(GetKey, Color3.fromRGB(255, 100, 100), Color3.fromRGB(255, 120, 120))
+
+    -- Result
+    local result = nil
+    local validKey = false
+
+    Submit.MouseButton1Click:Connect(function()
+        local key = TextBox.Text
+        if not key or key == "" then
+            ErrorLabel.Text = "Please enter a key."
+            return
+        end
+
+        local isValid, message = validateKey(key)
+        if isValid then
+            validKey = true
+            result = key
+            ScreenGui:Destroy()
+        else
+            ErrorLabel.Text = message or "Invalid key."
+            setclipboard("https://key.rbxscript.workers.dev")
+            game:GetService("TweenService"):Create(TextBox, TweenInfo.new(0.2), {
+                BackgroundColor3 = Color3.fromRGB(60, 30, 30)
+            }):Play()
+            task.wait(0.2)
+            game:GetService("TweenService"):Create(TextBox, TweenInfo.new(0.2), {
+                BackgroundColor3 = Color3.fromRGB(40, 40, 45)
+            }):Play()
+        end
+    end)
+
+    -- Get Key Button Functionality
+    GetKey.MouseButton1Click:Connect(function()
+        setclipboard("https://key.rbxscript.workers.dev")
+        game.StarterGui:SetCore("SendNotification", {
+            Title = "Link Copied",
+            Text = "Key link copied to clipboard!",
+            Duration = 3
+        })
+    end)
+
+    -- Close Button
+    local CloseButton = Instance.new("TextButton")
+    CloseButton.Size = UDim2.new(0, 30, 0, 30)
+    CloseButton.Position = UDim2.new(1, -40, 0, 10)
+    CloseButton.BackgroundColor3 = Color3.fromRGB(255, 80, 80)
+    CloseButton.Text = "X"
+    CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+    CloseButton.TextSize = 14
+    CloseButton.Font = Enum.Font.GothamBold
+    CloseButton.Parent = Frame
+
+    local CloseCorner = Instance.new("UICorner")
+    CloseCorner.CornerRadius = UDim.new(0, 8)
+    CloseCorner.Parent = CloseButton
+
+    CloseButton.MouseButton1Click:Connect(function()
+        result = ""
+        ScreenGui:Destroy()
+    end)
+
+    -- Animation
+    Frame.Position = UDim2.new(0.5, -175, 0.5, -300)
+    game:GetService("TweenService"):Create(Frame, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {
+        Position = UDim2.new(0.5, -175, 0.5, -110)
+    }):Play()
+
+    -- Handle Enter key press
+    UserInputService.InputBegan:Connect(function(input)
+        if input.KeyCode == Enum.KeyCode.Return and TextBox:IsFocused() then
+            Submit:Activate()
+        end
+    end)
+
+    repeat task.wait() until result ~= nil
+    return result, validKey
+end
+
+-- Proses utama
+local key, isValid = createUI()
+if not key or key == "" then
+    warn("❌ Tidak ada key yang dimasukkan.")
+    return
+end
+
+if isValid then
+    print("✅ Key valid. Menjalankan script...")
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/DarkNetworks/Infinite-Yield/main/latest.lua'))()
+end
