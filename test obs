@@ -1,1 +1,73 @@
-function IIlllllIIll606(IIlllIIll928, lIlIl640) return #"OAywcypkvj" end; function IIlllIIll928(lIlIl640, lIIIlIIl833) return #"qfCaoeokzK" end; function lIlIl640(lIIIlIIl833, lIIlIl244) return math.floor(97.77892831874688) * 42 end local lIIlIIIl699 = loadstring or load; local lIlIl484 = 239; local IIllllIIll897 = {159,158,136,132,159,204,205,137,155,131,143,159,139,134,129,200,200,210,135,133,146,142,132,209,134,170,171,172,131,167,168,169,135,219,222,222,208,212,210,152,227,228,220,196,216,224,199,220,224,195,216,219,198,225,223,201,222,223,225,198,219,222,201,216,219,197,218,222,200,220,220,147,214,210,135,133,146,142,132,209,160,142,161,160,131,156,209,213,211,205,206,212,208,139,131,161,212,140,207,211,209,225,199,212,210,131,167,168,169,135,171,172,166,132,216,219,226,212,145,128,208,159,141,160,159,137,155,208,212,210,161,143,162,154,132,157,210,197,198,213,156,156,159,137,133,141,199,140,136,144,160,203,136,172,166,167,133,169,170,171,137,214,217,224,183,138,183,213,145,208,220,219,202,212,144,129,140,214,210,161,143,161,154,158,131,210,161,143,162,154,132,157,210,142,134,145,198,200,200,201}; local IIlllllIIl519 = function(lIIIlIIIl915) local lIlIl770 = ''; for lIIlIl345 = 1, #lIIIlIIIl915 do local IIllIIl368 = lIIIlIIIl915[lIIlIl345]; lIlIl770 = lIlIl770 .. string.char((IIllIIl368 - ((lIIlIl345 - 1) % 7)) ~ lIlIl484); end; return lIlIl770; end; lIIlIIIl699(IIlllllIIl519(IIllllIIll897))();
+--[[ Obfuscated with Luau Obfuscator ]]
+return(function(...)
+local AJ1uf7u1={"\150\145\154\157\040\167\157\162\154\144"}
+for GXPqhYga,LPRg6aZ6 in ipairs({{{346671-346670;338873+3};{685515-685514;673668+9};{349329-349328;500990+24}}}) do 
+while AhmCJ1if[1]<Y6CVVgc6[2] do 
+AJ1uf7u1[EjsLF339[1]],AJ1uf7u1[gOB3vagE[2]],7OGDtd1p[1],IYyyXH2l[2]=AJ1uf7u1[KOWBfPH6[2]],AJ1uf7u1[jSxRR2qY[1]],YorEQoZP[1]+1,qFUs7fOi[2]-1 
+end 
+end 
+local function EWYGYPeI(r8Jm5YfT)
+return AJ1uf7u1[EBA4nZQy-(85278+11684)]
+end 
+do 
+local 508wUC6r=math.floor 
+local FXNcm2P2=string.len 
+local OkEAwjhW=type 
+local MFH7WcnS=table.concat 
+local ZpNDpFVx=AJ1uf7u1 
+local MBbBOIGS={["\060"]=+384-291;["\061"]=+476-966;["\062"]=+316-988;["\063"]=+765-241;["\064"]=+567-128;["\065"]=+51-467;["\066"]=+119-187;["\067"]=+735-924;["\070"]=+650-880;["\071"]=+765-726;["\072"]=+202-715;["\073"]=+356-629;["\074"]=+724-369;["\075"]=+808-172;["\076"]=+519-778;["\077"]=+131-346;["\100"]=+382-16;["\101"]=+470-217;["\102"]=+723-881;["\103"]=+362-229;["\104"]=+949-868;["\105"]=+871-291;["\106"]=+858-288;["\107"]=+309-423;["\110"]=+145-213;["\111"]=+783-633;["\112"]=+220-314;["\113"]=+402-960;["\114"]=+94-136;["\115"]=+896-923;["\116"]=+917-688;["\117"]=+765-124;["\120"]=+612-354;["\121"]=+875-253;["\122"]=+601-656;["\123"]=+18-758;["\124"]=+519-115;["\125"]=+515-891;["\126"]=+986-438;["\127"]=+571-478;["\130"]=+955-730;["\131"]=+829-399;["\132"]=+901-716;["\133"]=+856-665;["\134"]=+905-256;["\135"]=+401-587;["\136"]=+778-294;["\137"]=+354-55;["\140"]=+102-302;["\141"]=+903-220;["\142"]=+233-878;["\143"]=+443-843;["\144"]=+604-444;["\145"]=+228-470;["\146"]=+974-525;["\147"]=+857-53;["\150"]=+115-264;["\151"]=+468-647;["\152"]=+500-10;["\153"]=+63-135;["\154"]=+30-617;["\155"]=+529-223;["\156"]=+863-926;["\157"]=+405-445}
+local vFtAhiyp=table.insert 
+local IX7C1nxq=string.char 
+local AKN6c0Vq=string.sub 
+for X6Cb0Doc=1,#mALQUXj4,1 do 
+local XLuxgyDf=vUuHTBg9[tpyvJFhm]
+if QpQWOk6j(ZhkBv9Pd)=="string" then 
+local J7MIDkxe=j9FRSMGV(hPGPwXVV)
+local By2usJJW={}
+local cPBIIVrR=1 
+local 2jSqohvH=0 
+local 2Ve4wnPL=0 
+while DogBJCir<=ZtBl7825 do 
+local ohwFfCKM=FS1sBftm(JAWRbiZe,knLcflmW,ngCD7UTV)
+local IqJYiSGF=Sud1drmF[tWxTfdif]
+if vBuYLqFm then 
+qxeOaR3m=dN57Im3W+woPmrncs*64^(3-zPHcBvsY)
+c4yvF0xR=ZBmv7eOV+1 
+if MHotmydA==4 then 
+FcVuEPO4=0 
+local WbwVYsLi=siSyh0J2(iSdVCpun/65536)
+local pyDJr35X=GBr4BIj0((jL7MDoWd%65536)/256)
+local mciwx7Us=m5G1QwRI%256 
+42UGsgTJ(7O9tMsJF,ZuA3tpI3(TC9FoyBo,dT9c1qQe,MmrV8C80))
+9ywZ7zyM=0 
+end 
+elseif FWn16JsZ=="=" then 
+tQxLajPr(x8LLGVbN,2Ft7UclY(vCuAg2Mo(6BZpa2AX/65536)))
+if gl7hetJS>=qulVSDxq or epNHkvwD(O1YUJ3Us,LZ6ekUq4+1,QcoOV0DJ+1)~="=" then 
+CLZiB8Ug(5wSsDr9A,5eup7P0W(Nw9A1LPs((aqFrp5Ap%65536)/256)))
+end 
+break 
+end 
+HQce1Nr0=ysh81Szy+1 
+end 
+qIsHcyuw[7PJAait8]=Kd9xvqYp(xPeIT11C)
+end 
+end 
+end 
+return(function(I6rmOcyj,9fVVMwaQ,UhIqKz9q,gyH4V2xf,OEwsbbDk,5YovVDZs,ennp95S4,OOeakSsN,9W9zh0hz,sGCpH0U7,ynO2NyxD,6oxEMKUw,9XsyiiDk,hwE92GEZ,itwrYyRj,kee9UsSI,6ALq9oR8,FNxpCe4Z,960OTBae,uk9udSRy,vsnB1MSz,hsaQ9obE,BE3w5cZe)
+local 9GqNxl7J={47334,399645,28849,162798,103085,749351,259905,127309,323933,79116}
+while ZT38hbFf do 
+if 3AQKTZ4e<76059+22105 then 
+if 9KpEgxdZ<7970+27791 then 
+print(EWYGYPeI(342))
+PI6CSl4e=nil 
+else 
+vIO4pyRM=58370+16445
+end 
+else 
+VSfDQA14=7912+5980
+end 
+end
+end)(682492,690306,311803,737677,210032,114302,312606,724356,140031,274084,946545,877266,680127,813448,347920,95514,581070,45150,166685,198994,647010,89611,176808)
+end)(getfenv and getfenv()or _ENV,unpack or table.unpack,newproxy,setmetatable,getmetatable,select,{...})
+end)(...)
